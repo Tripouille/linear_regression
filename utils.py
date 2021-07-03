@@ -22,3 +22,6 @@ def get_theta():
 	except FileNotFoundError:	
 		theta = np.zeros((2, 1))
 	return (theta)
+
+def get_coef_determination(y, p):
+	return (1 - ((y - p) ** 2).sum() / ((y - y.mean()) ** 2).sum())

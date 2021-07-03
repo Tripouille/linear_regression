@@ -16,14 +16,15 @@ y = y.reshape(y.shape[0], 1)
 
 theta = get_theta()
 X = np.hstack((x, np.ones(x.shape)))
-theta = gradient_descent(X, y, theta, 0.1, 1000)
+theta = gradient_descent(X, y, theta, 0.01, 10000)
 plt.scatter(x, y, c='g', marker='+')
 plt.plot(x, model(X, theta), c='b')
 
 with open(".theta.npy", 'w') as file:
 	theta.tofile(file)
 
-plt.title("linear_regression")
+plt.suptitle("linear_regression")
+plt.title("coef = " + str(get_coef_determination(y, model(X, theta))))
 plt.xlabel(data[0][0] + " / 1E5")
 plt.ylabel(data[0][1] + " / 1E5")
 plt.show()
